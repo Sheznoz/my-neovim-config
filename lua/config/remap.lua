@@ -1,9 +1,11 @@
 -- Standard custom
-vim.keymap.set("n", "<leader>p", vim.cmd.Ex, { desc = "Directory view" })
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy, { desc = "Lazy.vim" })
 vim.keymap.set("n", "<leader>ss", vim.cmd.w, { desc = "Save" })
 vim.keymap.set("n", "<leader>sq", vim.cmd.wq, { desc = "Save & quit" })
 vim.keymap.set("n", "<leader>q", vim.cmd.q, { desc = "Quit" })
+
+-- Neotree
+vim.keymap.set("n", "<leader>p", function() vim.cmd("Neotree toggle") end, { desc = "Neotree toggle" })
 
 -- Telescope
 local telescope = require('telescope.builtin')
