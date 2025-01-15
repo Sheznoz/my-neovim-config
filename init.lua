@@ -5,3 +5,7 @@ require("config.remap")
 require("config.options")
 require("config.lspconfig")
 
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+	end,
+})

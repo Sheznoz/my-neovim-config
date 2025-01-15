@@ -1,4 +1,4 @@
-local lsplist = { "lua_ls", "astro", "biome", "bashls" }
+local lsplist = { "lua_ls", "astro", "biome", "bashls", "ts_ls", "tailwindcss" }
 require("mason").setup()
 
 require("mason-lspconfig").setup {
@@ -8,9 +8,11 @@ require("mason-lspconfig").setup {
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("lspconfig").lua_ls.setup { capabilities = capabilities }
-require("lspconfig").biome.setup {}
+require("lspconfig").biome.setup { capabilities = capabilities }
 require("lspconfig").astro.setup { capabilities = capabilities }
 require("lspconfig").bashls.setup { capabilities = capabilities }
+require("lspconfig").ts_ls.setup { capabilities = capabilities }
+require("lspconfig").tailwindcss.setup { capabilities = capabilities }
 
 local prettier = require("prettier")
 

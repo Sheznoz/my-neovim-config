@@ -11,7 +11,10 @@ map('n', 'gd', "<cmd>Telescope lsp_definitions<CR>", { desc = "Definitions" })
 map('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to definition" })
 
 -- Neotree
-map("n", "<leader>p", function() vim.cmd("Neotree toggle source=last") end, { desc = "Neotree toggle" })
+map("n", "<leader>p", function()
+		vim.cmd("Neotree toggle source=last position=left dir=.")
+	end,
+	{ desc = "Neotree toggle" })
 
 -- Telescope
 local telescope = require('telescope.builtin')
