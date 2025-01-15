@@ -4,19 +4,28 @@ vim.wo.number = true
 vim.cmd [[colorscheme nightfly]]
 require('mini.icons').setup()
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" } )
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" } )
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" } )
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.autoindent = true
 vim.expandtab = true
 vim.opt.fillchars='eob: '
 vim.opt.hlsearch = false
+vim.opt.clipboard = "unnamedplus"
 
 -- Neotree
 require("neo-tree").setup({
 	window = {
 		position = "left",
 		width = 40,
+		mapping_options = {
+			noremap = true,
+			nowait = true,
+		},
+		mappings = {
+			["Z"] = "expand_all_nodes",
+		},
 	},
 	filesystem = {
 		components = {
@@ -53,3 +62,73 @@ require("neo-tree").setup({
 		},
 	},
 })
+
+-- Bufferline
+vim.opt.termguicolors = true
+require("bufferline").setup{}
+
+
+-- Cybu
+require("cybu").setup({
+  position = {
+    relative_to = "editor",          -- win, editor, cursor
+    anchor = "topcenter",         -- topleft, topcenter, topright,
+                                    -- centerleft, center, centerright,
+                                    -- bottomleft, bottomcenter, bottomright
+    vertical_offset = 10,         -- vertical offset from anchor in lines
+    horizontal_offset = 0,        -- vertical offset from anchor in columns
+    max_win_height = 5,           -- height of cybu window in lines
+    max_win_width = 0.5,          -- integer for absolute in columns
+                                    -- float for relative to win/editor width
+  },
+  style = {
+    path = "relative",            -- absolute, relative, tail (filename only),
+                                    -- tail_dir (filename & parent dir)
+    path_abbreviation = "shortened",   -- none, shortened
+    border = "rounded",           -- single, double, rounded, none
+    separator = " ",              -- string used as separator
+    prefix = "…",                 -- string used as prefix for truncated paths
+    padding = 1,                  -- left & right padding in number of spaces
+    hide_buffer_id = true,        -- hide buffer IDs in window
+    devicons = {
+      enabled = true,             -- enable or disable web dev icons
+      colored = true,             -- enable color for web dev icons
+      truncate = true,            -- truncate wide icons to one char width
+    },
+    highlights = {                -- see highlights via :highlight
+      current_buffer = "MatchParen",       -- current / selected buffer
+      adjacent_buffers = "CybuAdjacent",  -- buffers not in focus
+      background = "Pmenu",      -- window background
+      border = "TablineSel",              -- border of the window
+    },
+  },
+  behavior = {                    -- set behavior for different modes
+    mode = {
+      default = {
+        switch = "immediate",     -- immediate, on_close
+        view = "rolling",         -- paging, rolling
+      },
+      last_used = {
+        switch = "immediate",      -- immediate, on_close
+        view = "rolling",          -- paging, rolling
+      },
+      auto = {
+        view = "rolling",         -- paging, rolling
+      },
+    },
+    show_on_autocmd = false,      -- event to trigger cybu (eg. "BufEnter")
+  },
+  display_time = 650,             -- time the cybu window is displayed
+  exclude = {                     -- filetypes, cybu will not be active
+    "neo-tree",
+    "fugitive",
+    "qf",
+  },
+  filter = {
+    unlisted = true,              -- filter & fallback for unlisted buffers
+  },
+  fallback = function() end,      -- arbitrary fallback function
+                                    -- used in excluded filetypes
+})
+
+-- LSP
