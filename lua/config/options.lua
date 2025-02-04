@@ -14,6 +14,7 @@ vim.opt.fillchars = 'eob: '
 vim.opt.hlsearch = false
 vim.opt.clipboard = "unnamedplus"
 vim.o.wrap = true
+vim.o.linebreak = true
 
 -- Neotree
 require("neo-tree").setup({
