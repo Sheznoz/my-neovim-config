@@ -13,7 +13,7 @@ vim.expandtab = true
 vim.opt.fillchars = 'eob: '
 vim.opt.hlsearch = false
 vim.opt.clipboard = "unnamedplus"
-vim.o.wrap = false
+vim.o.wrap = true
 
 -- Neotree
 require("neo-tree").setup({
