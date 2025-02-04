@@ -1,4 +1,4 @@
-local lsplist = { "lua_ls", "astro", "biome", "bashls", "ts_ls", "tailwindcss" }
+local lsplist = { "lua_ls", "astro", "biome", "bashls", "ts_ls", "tailwindcss", "typos_lsp" }
 require("mason").setup()
 
 require("mason-lspconfig").setup {
@@ -8,11 +8,13 @@ require("mason-lspconfig").setup {
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("lspconfig").lua_ls.setup { capabilities = capabilities }
+require("lspconfig").typos_lsp.setup { capabilities = capabilities, filetypes = { "markdown" } }
 require("lspconfig").biome.setup { capabilities = capabilities }
 require("lspconfig").astro.setup { capabilities = capabilities }
 require("lspconfig").bashls.setup { capabilities = capabilities }
 require("lspconfig").ts_ls.setup { capabilities = capabilities }
-require("lspconfig").tailwindcss.setup { capabilities = capabilities }
+require("lspconfig").markdown_oxide.setup { capabilities = capabilities }
+require("lspconfig").tailwindcss.setup { capabilities = capabilities, filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "clojure", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "gohtmltmpl", "haml", "handlebars", "hbs", "html", "htmlangular", "html-eex", "heex", "jade", "leaf", "liquid", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte", "templ" } }
 
 local prettier = require("prettier")
 

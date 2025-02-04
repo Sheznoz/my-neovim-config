@@ -13,6 +13,7 @@ vim.expandtab = true
 vim.opt.fillchars = 'eob: '
 vim.opt.hlsearch = false
 vim.opt.clipboard = "unnamedplus"
+vim.o.wrap = false
 
 -- Neotree
 require("neo-tree").setup({
@@ -76,7 +77,7 @@ require("bufferline").setup {}
 -- Cybu
 require("cybu").setup({
 	position = {
-		relative_to = "editor", -- win, editor, cursor
+		relative_to = "win", -- win, editor, cursor
 		anchor = "topcenter", -- topleft, topcenter, topright,
 		-- centerleft, center, centerright,
 		-- bottomleft, bottomcenter, bottomright
@@ -89,7 +90,7 @@ require("cybu").setup({
 	style = {
 		path = "relative", -- absolute, relative, tail (filename only),
 		-- tail_dir (filename & parent dir)
-		path_abbreviation = "shortened", -- none, shortened
+		path_abbreviation = "none", -- none, shortened
 		border = "rounded", -- single, double, rounded, none
 		separator = " ", -- string used as separator
 		prefix = "…", -- string used as prefix for truncated paths
@@ -135,5 +136,3 @@ require("cybu").setup({
 	fallback = function() end, -- arbitrary fallback function
 	-- used in excluded filetypes
 })
-
--- LSP
