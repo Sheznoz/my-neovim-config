@@ -15,7 +15,8 @@ vim.opt.hlsearch = false
 vim.opt.clipboard = "unnamedplus"
 vim.o.wrap = true
 vim.o.linebreak = true
-
+vim.opt.shortmess:append("I") -- Skip startup intro
+vim.opt.shortmess:append("c") -- Don't show completion messages
 -- Neotree
 require("neo-tree").setup({
 	window = {
